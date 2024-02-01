@@ -10,10 +10,10 @@ export class Project {
   }
 }
 
-export const ProjectStatus = {
-  suggested: 0,
-  started: 1,
-  completed: 2,
-  rejected: 3,
-  abandoned: 4,
-};
+export const ProjectStatus = [
+  "Suggested",
+  "Started",
+  "Completed",
+  "Rejected",
+  "Abandoned",
+];

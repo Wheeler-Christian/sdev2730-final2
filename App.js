@@ -7,6 +7,8 @@ import AllProjects from "./screens/AllProjects";
 import AddProject from "./screens/AddProject";
 import Map from "./screens/Map";
 import ProjectDetails from "./screens/ProjectDetails";
+import EditProject from "./screens/EditProject";
+import DeleteProject from "./screens/DeleteProject";
 
 import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/colors";
@@ -71,6 +73,20 @@ export default function App() {
             component={ProjectDetails}
             options={{
               title: "Loading Project...",
+            }}
+          />
+          <Stack.Screen
+            name="EditProject"
+            component={EditProject}
+            options={{
+              title: "Edit Project",
+            }}
+          />
+          <Stack.Screen
+            name="DeleteProject"
+            component={DeleteProject}
+            options={{
+              title: "Delete Project",
             }}
           />
         </Stack.Navigator>

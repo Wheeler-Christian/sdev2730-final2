@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import OutlinedButton from "../components/UI/OutlinedButton";
 import { Colors } from "../constants/colors";
+import { ProjectStatus } from "../models/project";
 import { fetchProjectDetails } from "../util/database";
 
 function ProjectDetails({ route, navigation }) {
+  const selectedProjectId = route.params.projectId;
   const [fetchedProject, setFetchedProject] = useState();
 
   function showOnMapHandler() {
@@ -14,14 +16,20 @@ function ProjectDetails({ route, navigation }) {
     });
   }
 
-  const selectedProjectId = route.params.projectId;
+  function editProjectHandler() {
+    navigation.navigate("EditProject", { project: fetchedProject });
+  }
+
+  function deleteProjectHandler() {
+    navigation.navigate("DeleteProject", { project: fetchedProject });
+  }
 
   useEffect(() => {
     async function loadProjectData() {
       const project = await fetchProjectDetails(selectedProjectId);
       setFetchedProject(project);
       navigation.setOptions({
-        title: project.title,
+        title: "Project Details",
       });
     }
 
@@ -39,12 +47,27 @@ function ProjectDetails({ route, navigation }) {
   return (
     <ScrollView>
       <Image style={styles.image} source={{ uri: fetchedProject.imageUri }} />
-      <View style={styles.locationContainer}>
-        <View style={styles.addressContainer}>
-          <Text style={styles.address}>{fetchedProject.address}</Text>
-        </View>
+      <View style={styles.textContainer}>
+        <Text style={styles.h1}>{fetchedProject.title}</Text>
+        <Text style={styles.h2}>
+          {ProjectStatus[fetchedProject.status]} Status
+        </Text>
+        <Text style={styles.text}>{fetchedProject.description}</Text>
+        <Text style={[styles.text, styles.bold]}>{fetchedProject.address}</Text>
+      </View>
+      <View style={styles.buttonContainer}>
         <OutlinedButton icon="map" onPress={showOnMapHandler}>
           View on Map
+        </OutlinedButton>
+      </View>
+      <View style={styles.buttonContainer}>
+        <OutlinedButton icon="pencil" onPress={editProjectHandler}>
+          Edit Project
+        </OutlinedButton>
+      </View>
+      <View style={styles.buttonContainer}>
+        <OutlinedButton icon="trash" onPress={deleteProjectHandler}>
+          Delete Project
         </OutlinedButton>
       </View>
     </ScrollView>
@@ -59,6 +82,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  h1: {
+    color: Colors.primary500,
+    marginVertical: 3,
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  h2: {
+    color: Colors.primary500,
+    marginVertical: 3,
+    fontSize: 18,
+    fontWeight: "bold",
+  },
   image: {
     height: "35%",
     minHeight: 300,
@@ -68,13 +103,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  addressContainer: {
-    padding: 20,
+  textContainer: {
+    paddingHorizontal: 20,
+    paddingTop: 10,
   },
-  address: {
+  text: {
     color: Colors.primary500,
-    textAlign: "center",
-    fontWeight: "bold",
+    textAlign: "left",
     fontSize: 16,
+    marginVertical: 3,
+  },
+  bold: {
+    fontWeight: "bold",
+  },
+  buttonContainer: {
+    margin: 6,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

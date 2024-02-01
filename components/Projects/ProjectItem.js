@@ -1,5 +1,6 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../constants/colors";
+import { ProjectStatus } from "../../models/project";
 
 function ProjectItem({ project, onSelect }) {
   return (
@@ -10,6 +11,9 @@ function ProjectItem({ project, onSelect }) {
       <Image style={styles.image} source={{ uri: project.imageUri }} />
       <View style={styles.info}>
         <Text style={styles.title}>{project.title}</Text>
+        <Text style={styles.status}>
+          {ProjectStatus[project.status]} Status
+        </Text>
         <Text style={styles.address}>{project.address}</Text>
       </View>
     </Pressable>
@@ -47,6 +51,11 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
+    color: Colors.gray700,
+  },
+  status: {
+    fontWeight: "bold",
+    fontSize: 14,
     color: Colors.gray700,
   },
   address: {

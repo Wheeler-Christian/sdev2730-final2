@@ -126,3 +126,54 @@ export function fetchProjectDetails(id) {
 
   return promise;
 }
+
+export function updateProject(project) {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((tx) => {
+      tx.executeSql(
+        `UPDATE projects
+         SET title=?, 
+          description=?, 
+          status=?, 
+          imageUri=?
+        WHERE id=?`,
+        [
+          project.title,
+          project.description,
+          project.status,
+          project.imageUri,
+          project.id,
+        ],
+        (_, resultUpdate) => {
+          console.log(
+            "ROWS AFFECTED AFTER UPDATE STATEMENT: ",
+            resultUpdate.rowsAffected
+          );
+          resolve(resultUpdate);
+        },
+        (_, errorUpdate) => {
+          reject(errorUpdate);
+        }
+      );
+    });
+  });
+
+  return promise;
+}
+
+export function deleteProjectQuery(id) {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((tx) => {
+      tx.executeSql(
+        "DELETE FROM projects WHERE id = ?",
+        [id],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+}
