@@ -38,7 +38,7 @@ function ProjectForm({ onCreateProject }) {
     const projectData = new Project(
       titleState,
       descriptionState,
-      ProjectStatus.suggested,
+      projectStatusState,
       selectedImage,
       pickedLocation
     );
