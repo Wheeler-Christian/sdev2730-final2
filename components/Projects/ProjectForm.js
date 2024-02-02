@@ -108,7 +108,7 @@ function ProjectForm({ onCreateProject }) {
           </View>
         </View>
       </View>
-      <ImagePicker onTakeImage={takeImageHandler} />
+      <ImagePicker imageInput={null} onTakeImage={takeImageHandler} />
       <LocationPicker onPickLocation={pickLocationHandler} />
       <View style={styles.button}>
         <Button onPress={saveProjectHandler}>Add Project</Button>

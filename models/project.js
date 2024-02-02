@@ -17,3 +17,11 @@ export const ProjectStatus = [
   "Rejected",
   "Abandoned",
 ];
+
+export const StatusColor = [
+  'blue',
+  'yellow',
+  'green',
+  'red',
+  'black'
+]

@@ -1,4 +1,4 @@
-import { Alert, Image, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../constants/colors";
 import OutlinedButton from "../components/UI/OutlinedButton";
 import { deleteProjectQuery } from "../util/database";

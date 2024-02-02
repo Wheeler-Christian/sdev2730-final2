@@ -49,7 +49,7 @@ export default function App() {
             name="AllProjects"
             component={AllProjects}
             options={({ navigation }) => ({
-              title: "Your Projects",
+              title: "City Planner -- Projects",
               headerRight: ({ tintColor }) => (
                 <IconButton
                   icon="add"
