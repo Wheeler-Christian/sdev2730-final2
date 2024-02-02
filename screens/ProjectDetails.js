@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import Button from "../components/UI/Button";
+import IconButton from "../components/UI/IconButton";
 import OutlinedButton from "../components/UI/OutlinedButton";
 import { Colors } from "../constants/colors";
 import { ProjectStatus } from "../models/project";
@@ -8,6 +10,26 @@ import { fetchProjectDetails } from "../util/database";
 function ProjectDetails({ route, navigation }) {
   const selectedProjectId = route.params.projectId;
   const [fetchedProject, setFetchedProject] = useState();
+
+  function headerButtonPressHandler() {
+    console.log("pressed");
+  }
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: "Project Details",
+      headerRight: () => {
+        return (
+          <IconButton
+            icon="star-outline"
+            size={24}
+            color="white"
+            onPress={headerButtonPressHandler}
+          />
+        );
+      },
+    });
+  }, [navigation, headerButtonPressHandler]);
 
   function showOnMapHandler() {
     navigation.navigate("Map", {
@@ -28,9 +50,6 @@ function ProjectDetails({ route, navigation }) {
     async function loadProjectData() {
       const project = await fetchProjectDetails(selectedProjectId);
       setFetchedProject(project);
-      navigation.setOptions({
-        title: "Project Details",
-      });
     }
 
     loadProjectData();
