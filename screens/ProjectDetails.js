@@ -9,12 +9,21 @@ import { FavoritesContext } from "../store/context/favorites-context";
 import { fetchProjectDetails } from "../util/database";
 
 function ProjectDetails({ route, navigation }) {
-  const favoriteProjectCtx = useContext(FavoritesContext);
+  const favoriteProjectsCtx = useContext(FavoritesContext);
 
   const selectedProjectId = route.params.projectId;
   const [fetchedProject, setFetchedProject] = useState();
 
-  function headerButtonPressHandler() {}
+  const projectIsFavorite = favoriteProjectsCtx.ids.includes(selectedProjectId);
+
+  function toggleFavoriteHandler() {
+    console.log(favoriteProjectsCtx.ids);
+    if (projectIsFavorite) {
+      favoriteProjectsCtx.removeFavorite(selectedProjectId);
+    } else {
+      favoriteProjectsCtx.addFavorite(selectedProjectId);
+    }
+  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -22,15 +31,15 @@ function ProjectDetails({ route, navigation }) {
       headerRight: () => {
         return (
           <IconButton
-            icon="star-outline"
+            icon={projectIsFavorite ? "star" : "star-outline"}
             size={24}
             color="black"
-            onPress={headerButtonPressHandler}
+            onPress={toggleFavoriteHandler}
           />
         );
       },
     });
-  }, [navigation, headerButtonPressHandler]);
+  }, [navigation, toggleFavoriteHandler]);
 
   function showOnMapHandler() {
     navigation.navigate("Map", {
