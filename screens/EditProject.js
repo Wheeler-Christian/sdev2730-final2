@@ -31,22 +31,18 @@ function EditProject({ navigation, route }) {
   // vvvvv Handlers vvvvv
   function changeTitleHandler(newTitle) {
     setTitleState(newTitle);
-    console.log(titleState);
   }
 
   function changeDescriptionHandler(newDescription) {
     setDescriptionState(newDescription);
-    console.log(descriptionState);
   }
 
   function changeStatusHandler(newStatus) {
     setProjectStatusState(newStatus);
-    console.log(projectStatusState);
   }
 
   function changeImageHandler(newImageUri) {
     setImageUriState(newImageUri);
-    console.log(imageUriState);
   }
 
   async function saveChangesHandler() {

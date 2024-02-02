@@ -1,7 +1,14 @@
-import { Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 function Favorites() {
-  return <Text>The favorites screen</Text>;
+  return <Text style={styles.text}>The favorites screen</Text>;
 }
 
 export default Favorites;
+
+const styles = StyleSheet.create({
+  text: {
+    color: "white",
+    margin: 2,
+  },
+});

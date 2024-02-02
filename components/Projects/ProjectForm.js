@@ -2,7 +2,6 @@ import { useCallback, useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../../constants/colors";
 import { Project, ProjectStatus } from "../../models/project";
-import { RadioButton } from "react-native-paper";
 import Button from "../UI/Button";
 import ImagePicker from "./ImagePicker";
 import LocationPicker from "./LocationPicker";
@@ -10,7 +9,6 @@ import LocationPicker from "./LocationPicker";
 function ProjectForm({ onCreateProject }) {
   const [titleState, setTitleState] = useState("");
   const [descriptionState, setDescriptionState] = useState("");
-  const [projectStatusState, setProjectStatusState] = useState(0);
   const [selectedImage, setSelectedImage] = useState();
   const [pickedLocation, setPickedLocation] = useState();
 
@@ -21,10 +19,6 @@ function ProjectForm({ onCreateProject }) {
   function changeDescriptionHandler(newDescription) {
     setDescriptionState(newDescription);
   }
-
-  // function changeStatusHandler(newStatus) {
-  //   setProjectStatusState(newStatus);
-  // }
 
   function takeImageHandler(imageUri) {
     setSelectedImage(imageUri);
@@ -38,7 +32,7 @@ function ProjectForm({ onCreateProject }) {
     const projectData = new Project(
       titleState,
       descriptionState,
-      projectStatusState,
+      ProjectStatus.indexOf("Suggested"),
       selectedImage,
       pickedLocation
     );
@@ -57,58 +51,14 @@ function ProjectForm({ onCreateProject }) {
         <Text style={styles.label}>Description</Text>
         <TextInput
           style={styles.input}
+          multiline={true}
           onChangeText={changeDescriptionHandler}
           value={descriptionState}
         />
-        <Text style={styles.label}>Project Status</Text>
-        <View style={styles.radioGroup}>
-          <View style={styles.rbContainer}>
-            <RadioButton
-              value={0}
-              status={projectStatusState === 0 ? "checked" : "unchecked"}
-              onPress={() => setProjectStatusState(0)}
-            />
-            <Text style={styles.rbText}>{"suggested"}</Text>
-          </View>
-
-          <View style={styles.rbContainer}>
-            <RadioButton
-              value={1}
-              status={projectStatusState === 1 ? "checked" : "unchecked"}
-              onPress={() => setProjectStatusState(1)}
-            />
-            <Text style={styles.rbText}>{"started"}</Text>
-          </View>
-
-          <View style={styles.rbContainer}>
-            <RadioButton
-              value={2}
-              status={projectStatusState === 2 ? "checked" : "unchecked"}
-              onPress={() => setProjectStatusState(2)}
-            />
-            <Text style={styles.rbText}>{"completed"}</Text>
-          </View>
-
-          <View style={styles.rbContainer}>
-            <RadioButton
-              value={3}
-              status={projectStatusState === 3 ? "checked" : "unchecked"}
-              onPress={() => setProjectStatusState(3)}
-            />
-            <Text style={styles.rbText}>{"rejected"}</Text>
-          </View>
-
-          <View style={styles.rbContainer}>
-            <RadioButton
-              value={4}
-              status={projectStatusState === 4 ? "checked" : "unchecked"}
-              onPress={() => setProjectStatusState(4)}
-            />
-            <Text style={styles.rbText}>{"abandoned"}</Text>
-          </View>
-        </View>
       </View>
+      <Text style={styles.label}>Image of Project Site</Text>
       <ImagePicker imageInput={null} onTakeImage={takeImageHandler} />
+      <Text style={styles.label}>Location of Project</Text>
       <LocationPicker onPickLocation={pickLocationHandler} />
       <View style={styles.button}>
         <Button onPress={saveProjectHandler}>Add Project</Button>

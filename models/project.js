@@ -18,10 +18,10 @@ export const ProjectStatus = [
   "Abandoned",
 ];
 
-export const StatusColor = [
-  'blue',
-  'yellow',
-  'green',
-  'red',
-  'black'
-]
+// export const StatusColor = [
+//   'blue',
+//   'yellow',
+//   'green',
+//   'red',
+//   'black'
+// ]

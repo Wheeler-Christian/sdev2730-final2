@@ -20,6 +20,7 @@ import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/colors";
 import { useEffect, useState } from "react";
 import { init } from "./util/database";
+import FavoritesContextProvider from "./store/context/favorites-context";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -88,46 +89,48 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: Colors.primary500 },
-            headerTintColor: Colors.gray700,
-            contentStyle: { backgroundColor: Colors.gray700 },
-          }}
-        >
-          <Stack.Screen
-            name="DrawerScreen"
-            component={DrawerNavigator}
-            options={{
-              headerShown: false,
+      <FavoritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: Colors.primary500 },
+              headerTintColor: Colors.gray700,
+              contentStyle: { backgroundColor: Colors.gray700 },
             }}
-          />
-          <Stack.Screen
-            name="AddProject"
-            component={AddProject}
-            options={{
-              title: "Add a new Project",
-            }}
-          />
-          <Stack.Screen name="Map" component={Map} />
-          <Stack.Screen name="ProjectDetails" component={ProjectDetails} />
-          <Stack.Screen
-            name="EditProject"
-            component={EditProject}
-            options={{
-              title: "Edit Project",
-            }}
-          />
-          <Stack.Screen
-            name="DeleteProject"
-            component={DeleteProject}
-            options={{
-              title: "Delete Project",
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name="DrawerScreen"
+              component={DrawerNavigator}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="AddProject"
+              component={AddProject}
+              options={{
+                title: "Add a new Project",
+              }}
+            />
+            <Stack.Screen name="Map" component={Map} />
+            <Stack.Screen name="ProjectDetails" component={ProjectDetails} />
+            <Stack.Screen
+              name="EditProject"
+              component={EditProject}
+              options={{
+                title: "Edit Project",
+              }}
+            />
+            <Stack.Screen
+              name="DeleteProject"
+              component={DeleteProject}
+              options={{
+                title: "Delete Project",
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }

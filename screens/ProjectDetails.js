@@ -1,19 +1,20 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import Button from "../components/UI/Button";
 import IconButton from "../components/UI/IconButton";
 import OutlinedButton from "../components/UI/OutlinedButton";
 import { Colors } from "../constants/colors";
 import { ProjectStatus } from "../models/project";
+import { FavoritesContext } from "../store/context/favorites-context";
 import { fetchProjectDetails } from "../util/database";
 
 function ProjectDetails({ route, navigation }) {
+  const favoriteProjectCtx = useContext(FavoritesContext);
+
   const selectedProjectId = route.params.projectId;
   const [fetchedProject, setFetchedProject] = useState();
 
-  function headerButtonPressHandler() {
-    console.log("pressed");
-  }
+  function headerButtonPressHandler() {}
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -23,7 +24,7 @@ function ProjectDetails({ route, navigation }) {
           <IconButton
             icon="star-outline"
             size={24}
-            color="white"
+            color="black"
             onPress={headerButtonPressHandler}
           />
         );
