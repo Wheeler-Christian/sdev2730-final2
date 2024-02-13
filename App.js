@@ -29,13 +29,13 @@ function DrawerNavigator() {
   return (
     <Drawer.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: Colors.primary500 },
-        headerTintColor: Colors.gray700,
-        sceneContainerStyle: { backgroundColor: Colors.gray700 },
-        drawerContentStyle: { backgroundColor: Colors.primary700 },
-        drawerInactiveTintColor: "#eee",
-        drawerActiveTintColor: "black",
-        drawerActiveBackgroundColor: Colors.primary100,
+        headerStyle: { backgroundColor: Colors.bgNavHeader },
+        headerTintColor: Colors.cNavHeader,
+        sceneContainerStyle: { backgroundColor: Colors.bgMain },
+        drawerContentStyle: { backgroundColor: Colors.bgDrawer },
+        drawerInactiveTintColor: Colors.cDrawerInactive,
+        drawerActiveTintColor: Colors.cDrawerActive,
+        drawerActiveBackgroundColor: Colors.bgDrawerActive,
       }}
     >
       <Drawer.Screen
@@ -88,14 +88,14 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <FavoritesContextProvider>
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
-              headerStyle: { backgroundColor: Colors.primary500 },
-              headerTintColor: Colors.gray700,
-              contentStyle: { backgroundColor: Colors.gray700 },
+              headerStyle: { backgroundColor: Colors.bgNavHeader },
+              headerTintColor: Colors.cNavHeader,
+              contentStyle: { backgroundColor: Colors.bgMain },
             }}
           >
             <Stack.Screen

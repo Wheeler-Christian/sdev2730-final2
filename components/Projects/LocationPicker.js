@@ -87,7 +87,9 @@ function LocationPicker({ onPickLocation }) {
     navigation.navigate("Map");
   }
 
-  let locationPreview = <Text>No location picked yet.</Text>;
+  let locationPreview = (
+    <Text style={styles.text}>No location picked yet.</Text>
+  );
 
   if (pickedLocation) {
     locationPreview = (
@@ -104,10 +106,18 @@ function LocationPicker({ onPickLocation }) {
     <View>
       <View style={styles.mapPreview}>{locationPreview}</View>
       <View style={styles.actions}>
-        <OutlinedButton icon="location" onPress={getLocationHandler}>
+        <OutlinedButton
+          icon="location"
+          color={Colors.cMain}
+          onPress={getLocationHandler}
+        >
           Locate User
         </OutlinedButton>
-        <OutlinedButton icon="map" onPress={pickOnMapHandler}>
+        <OutlinedButton
+          icon="map"
+          color={Colors.cMain}
+          onPress={pickOnMapHandler}
+        >
           Pick on Map
         </OutlinedButton>
       </View>
@@ -124,7 +134,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.primary100,
+    backgroundColor: Colors.bgTextInput,
     borderRadius: 4,
     overflow: "hidden",
   },
@@ -137,5 +147,8 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     // borderRadius: 4,
+  },
+  text: {
+    color: Colors.cMainLighter,
   },
 });

@@ -31,14 +31,14 @@ function DeleteProject({ navigation, route }) {
       <View style={styles.buttonsContainer}>
         <OutlinedButton
           icon="arrow-back-outline"
-          myColor={Colors.accent500}
+          color={Colors.yellow}
           onPress={goBackHandler}
         >
           No, go back
         </OutlinedButton>
         <OutlinedButton
           icon={"trash"}
-          myColor={Colors.confirm500}
+          color={Colors.green}
           onPress={confirmDeleteHandler}
         >
           Confirm deletion
@@ -56,24 +56,24 @@ const styles = StyleSheet.create({
   },
   h1: {
     marginVertical: 30,
-    color: Colors.primary500,
+    color: Colors.cMain,
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 24,
   },
   details: {
-    borderColor: Colors.primary500,
+    borderColor: Colors.cMain,
     borderWidth: 1,
     paddingHorizontal: 8,
     paddingVertical: 16,
   },
   title: {
-    color: Colors.primary500,
+    color: Colors.cMain,
     fontWeight: "bold",
     fontSize: 22,
   },
   address: {
-    color: Colors.primary500,
+    color: Colors.cMain,
     fontSize: 18,
   },
   buttonsContainer: {

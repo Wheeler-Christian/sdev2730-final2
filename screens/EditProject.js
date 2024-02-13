@@ -84,7 +84,9 @@ function EditProject({ navigation, route }) {
         onTakeImage={changeImageHandler}
       />
       <View style={styles.button}>
-        <Button onPress={saveChangesHandler}>Save Changes</Button>
+        <Button onPress={saveChangesHandler} bgColor={Colors.bgButton}>
+          Save Changes
+        </Button>
       </View>
     </ScrollView>
   );
@@ -101,16 +103,17 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: "bold",
     marginBottom: 4,
-    color: Colors.primary500,
+    color: Colors.cMain,
   },
   input: {
     marginVertical: 8,
     paddingHorizontal: 4,
     paddingVertical: 8,
     fontSize: 16,
-    borderBottomColor: Colors.primary700,
+    borderBottomColor: Colors.bgBorder,
     borderBottomWidth: 2,
-    backgroundColor: Colors.primary100,
+    backgroundColor: Colors.bgTextInput,
+    color: Colors.cMainLighter,
   },
   radioGroup: {},
   rbContainer: {

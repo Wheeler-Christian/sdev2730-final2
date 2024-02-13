@@ -49,7 +49,7 @@ function ImagePicker({ imageInput, onTakeImage }) {
     onTakeImage(image.uri);
   }
 
-  let imagePreview = <Text>No image taken yet.</Text>;
+  let imagePreview = <Text style={styles.text}>No image taken yet.</Text>;
 
   if (pickedImage) {
     imagePreview = <Image style={styles.image} source={{ uri: pickedImage }} />;
@@ -58,7 +58,11 @@ function ImagePicker({ imageInput, onTakeImage }) {
   return (
     <View>
       <View style={styles.imagePreview}>{imagePreview}</View>
-      <OutlinedButton icon="camera" onPress={takeImageHandler}>
+      <OutlinedButton
+        icon="camera"
+        color={Colors.cMain}
+        onPress={takeImageHandler}
+      >
         {imageInput ? "Change Image" : "Take Image"}
       </OutlinedButton>
     </View>
@@ -74,7 +78,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.primary100,
+    backgroundColor: Colors.bgTextInput,
     borderRadius: 4,
     overflow: "hidden",
   },
@@ -82,5 +86,8 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     // borderRadius: 4,
+  },
+  text: {
+    color: Colors.cMainLighter,
   },
 });

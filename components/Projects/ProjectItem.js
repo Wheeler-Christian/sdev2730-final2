@@ -28,9 +28,9 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     borderRadius: 6,
     marginVertical: 12,
-    backgroundColor: Colors.primary500,
+    backgroundColor: Colors.bgCard,
     elevation: 2,
-    shadowColor: "black",
+    shadowColor: "white",
     shadowOpacity: 0.15,
     shadowOffset: { width: 1, height: 1 },
     shadowRadius: 2,
@@ -51,15 +51,15 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
-    color: Colors.gray700,
+    color: Colors.cCard,
   },
   status: {
     fontWeight: "bold",
     fontSize: 14,
-    color: Colors.gray700,
+    color: Colors.cCard,
   },
   address: {
     fontSize: 12,
-    color: Colors.gray700,
+    color: Colors.cCard,
   },
 });

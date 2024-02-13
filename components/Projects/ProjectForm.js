@@ -61,7 +61,12 @@ function ProjectForm({ onCreateProject }) {
       <Text style={styles.label}>Location of Project</Text>
       <LocationPicker onPickLocation={pickLocationHandler} />
       <View style={styles.button}>
-        <Button onPress={saveProjectHandler}>Add Project</Button>
+        <Button
+          onPress={saveProjectHandler}
+          bgColor={Colors.bgButton}
+        >
+          Add Project
+        </Button>
       </View>
     </ScrollView>
   );
@@ -78,24 +83,22 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: "bold",
     marginBottom: 4,
-    color: Colors.primary500,
+    color: Colors.cMain,
   },
   input: {
     marginVertical: 8,
     paddingHorizontal: 4,
     paddingVertical: 8,
     fontSize: 16,
-    borderBottomColor: Colors.primary700,
+    borderBottomColor: Colors.bgBorder,
     borderBottomWidth: 2,
-    backgroundColor: Colors.primary100,
+    backgroundColor: Colors.bgTextInput,
+    color: Colors.cMainLighter,
   },
   radioGroup: {},
   rbContainer: {
     flexDirection: "row",
     alignItems: "center",
-  },
-  rbText: {
-    color: Colors.primary500,
   },
   button: {
     paddingTop: 24,

@@ -33,7 +33,7 @@ function ProjectDetails({ route, navigation }) {
           <IconButton
             icon={projectIsFavorite ? "star" : "star-outline"}
             size={24}
-            color="black"
+            color={Colors.cNavHeader}
             onPress={toggleFavoriteHandler}
           />
         );
@@ -85,17 +85,29 @@ function ProjectDetails({ route, navigation }) {
         <Text style={[styles.text, styles.bold]}>{fetchedProject.address}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <OutlinedButton icon="map" onPress={showOnMapHandler}>
+        <OutlinedButton
+          icon="map"
+          color={Colors.cMain}
+          onPress={showOnMapHandler}
+        >
           View on Map
         </OutlinedButton>
       </View>
       <View style={styles.buttonContainer}>
-        <OutlinedButton icon="pencil" onPress={editProjectHandler}>
+        <OutlinedButton
+          icon="pencil"
+          color={Colors.cMain}
+          onPress={editProjectHandler}
+        >
           Edit Project
         </OutlinedButton>
       </View>
       <View style={styles.buttonContainer}>
-        <OutlinedButton icon="trash" onPress={deleteProjectHandler}>
+        <OutlinedButton
+          icon="trash"
+          color={Colors.cMain}
+          onPress={deleteProjectHandler}
+        >
           Delete Project
         </OutlinedButton>
       </View>
@@ -112,13 +124,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   h1: {
-    color: Colors.primary500,
+    color: Colors.cMain,
     marginVertical: 3,
     fontSize: 24,
     fontWeight: "bold",
   },
   h2: {
-    color: Colors.primary500,
+    color: Colors.cMain,
     marginVertical: 3,
     fontSize: 18,
     fontWeight: "bold",
@@ -137,7 +149,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   text: {
-    color: Colors.primary500,
+    color: Colors.cMain,
     textAlign: "left",
     fontSize: 16,
     marginVertical: 3,
